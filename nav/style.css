@@ -7,9 +7,7 @@ body{
     
 }
 
-section{
-    height: 700px;
-}
+
 
 /*-----------------nav---------------------*/
 .navbar {
@@ -35,6 +33,7 @@ section{
 .sociallink{
     flex-direction: column;
     display: flex;
+    align-items: center;
 }
 .space .row{
     margin-bottom: 5px;
