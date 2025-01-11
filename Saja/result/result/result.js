@@ -20,6 +20,7 @@ function calcRes(arrName,corr,url,testname){
     }
     let arr = arrAns.map(item => item.replace(/'/g, "\\'"));
     console.log(arr);
+    let len=arr.length;
     
     resCard.innerHTML = `
                     <div class="card w-75">
@@ -31,7 +32,7 @@ function calcRes(arrName,corr,url,testname){
                     </div>
                     <div>
                     <button class="btn btn-green mt-5 ms-1 ps-4 pe-4" id="btn" onclick=" showAns('${url}','${arr}')">Review Qize</button>
-                    <button class="btn btn-outline-green mt-5 me-1 ps-5 pe-5" id="btn" onclick="back('scour_${testname}', '${score}')">back</button>
+                    <button class="btn btn-outline-green mt-5 me-1 ps-5 pe-5" id="btn" onclick="back('scour_${testname}', '${score}','${len}')">back</button>
                     <div>
                     
                 `;
@@ -39,12 +40,15 @@ function calcRes(arrName,corr,url,testname){
     
 }
 
-function back(name,score){
-    sessionStorage.setItem(name, score);
-
+function back(name,score,arr){
+    const percentage = (score /arr) * 100;
+    console.log(percentage);
+    
+    sessionStorage.setItem(name, percentage);
 // Redirect to the testHere page
     window.location.href = '../../../../sally/test-here/testHere.html';
 }
+
 
 
 window.onload=()=>{
@@ -54,14 +58,14 @@ window.onload=()=>{
 
     //to know which result to calculate to read 
     if (rsultId == '0') {
-        url = '../../Saja/JSON/IQ.json';
+        url = '../../JSON/IQ.json';
         testname = 'iq';
 
         calcRes('iqans','iqcorrectAns',url,testname)
         
     } 
     else if (rsultId == '1') {
-        url = '../../Saja/JSON/English.json';
+        url = '../../JSON/English.json';
         testname = 'eng';
 
         calcRes('engans','engcorrectAns',url,testname)
@@ -69,12 +73,20 @@ window.onload=()=>{
 
     } 
     else if (rsultId == '2') {
-        url = '../../Saja/JSON/technical.json';
+        url = '../../JSON/technical.json';
         testname = 'tech';
 
         calcRes('techans','techcorrectAns',url,testname)
 
     }
+}
+
+function escapeHtml(str) {
+    return str.replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;")
+              .replace(/'/g, "&#039;");
 }
 
 function displayOption(op,arrAns, con = 0,correct_answer) {
@@ -84,29 +96,32 @@ function displayOption(op,arrAns, con = 0,correct_answer) {
     
     // Loop through the options
     for (const option of op) {
+        let opt=escapeHtml(option)
 
-        if(option == arr[con] && arr[con]==correct_answer){
+    
+
+        if(opt == escapeHtml(arr[con] ) && escapeHtml (arr[con] )== escapeHtml (correct_answer)){
             c += `
             <div class="option bg-success text-white">
-                <input checked type="radio" name="question${con}" id="o${o}" value="${option}">
-                <label for="o${o}">${option}</label>
+                <input checked type="radio" name="question${con}" id="o${o}" value="${opt}">
+                <label for="o${o}">${opt}</label>
             </div>
             `;
         }
 
-        else if(option == arr[con] && arr[con] != correct_answer){
+        else if(opt == escapeHtml (arr[con]) && escapeHtml(arr[con] )!= escapeHtml (correct_answer)){
             c += `
             <div class="option bg-danger text-white">
-                <input checked type="radio" name="question${con}" id="o${o}" value="${option}">
-                <label for="o${o}">${option}</label>
+                <input checked type="radio" name="question${con}" id="o${o}" value="${opt}">
+                <label for="o${o}">${opt}</label>
             </div>
             `;
         }
         else{
             c += `
             <div class="option">
-                <input type="radio" name="question${con}" id="o${o}" value="${option}">
-                <label for="o${o}">${option}</label>
+                <input type="radio" name="question${con}" id="o${o}" value="${opt}">
+                <label for="o${o}">${opt}</label>
             </div>
             `;
         }
@@ -136,7 +151,7 @@ function displayOptionImg(op, arrAns, con = 0,correct_answer ) {
             <div class ='bg-success text-white'>
             <input type="radio" checked name="question${con}" id="o${o}" value="${option}" class="card-text mt-4 ms-4 me-2 bg-success text-white"}">
             <label for="o${o}">
-                <img src="../../Saja/JSON/${option}" alt="Option ${o}" style="max-width: 200px; display: block;">
+                <img src="../../JSON/${option}" alt="Option ${o}" style="max-width: 200px; display: block;">
             </label><br>
             </div>
             `;
@@ -146,7 +161,7 @@ function displayOptionImg(op, arrAns, con = 0,correct_answer ) {
              <div class ='bg-danger text-white'>
             <input type="radio" checked name="question${con}" id="o${o}" value="${option}" class="card-text mt-4 ms-4 me-2 bg-danger text-white"}">
             <label for="o${o}">
-                <img src="../../Saja/JSON/${option}" alt="Option ${o}" style="max-width: 200px; display: block;">
+                <img src="../../JSON/${option}" alt="Option ${o}" style="max-width: 200px; display: block;">
             </label><br>
             </div>
             `;
@@ -155,7 +170,7 @@ function displayOptionImg(op, arrAns, con = 0,correct_answer ) {
             c += `
             <input type="radio" name="question${con}" id="o${o}" value="${option}" class="card-text mt-4 ms-4 me-2 bg-success text-white"}">
             <label for="o${o}">
-                <img src="../../Saja/JSON/${option}" alt="Option ${o}" style="max-width: 200px; display: block;">
+                <img src="../../JSON/${option}" alt="Option ${o}" style="max-width: 200px; display: block;">
             </label><br>
             `;
         }
@@ -187,9 +202,9 @@ function showAns(url,arrAns) {
                 <div class="card w-75 m-2">
                     <div  id="inertContent"  class="card-body ">
                         <h5  class="card-title">${question.question}</h5><br>
-                        <img src="../../Saja/JSON/${question.image_path}" style="max-width: 400px; display: block;">
+                        <img src="../../JSON/${question.image_path}" style="max-width: 400px; display: block;">
                         ${displayOptionImg(question.options,arrAns,i,question.correct_answer)}
-                        <p class= 'CorrctAns mt-4'>Correcrt Answer is :<img src="../../Saja/JSON/${question.correct_answer}" style="max-width: 200px; display: block;"> </p> 
+                        <p class= 'CorrctAns mt-4'>Correcrt Answer is :<img src="../../JSON/${question.correct_answer}" style="max-width: 200px; display: block;"> </p> 
                     </div>
                 </div>
             `
@@ -202,7 +217,7 @@ function showAns(url,arrAns) {
                     <div  id="inertContent"  class="card-body ">
                         <h5  class="card-title">${question.question}</h5><br>
                         ${displayOption(question.options,arrAns,i,question.correct_answer)}
-                        <p class= 'CorrctAns mt-4'>Correcrt Answer is : <span class='correct'> ${question.correct_answer} <span> </p>
+                        <p class= 'CorrctAns mt-4'>Correcrt Answer is : <span class='correct'> ${escapeHtml(question.correct_answer)} <span> </p>
                     </div>
                 </div>
             `;}
