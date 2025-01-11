@@ -5,9 +5,10 @@ function displayOption(op, con = 0) {
     
     // Loop through the options
     for (const option of op) {
+        const escapedOption = escapeHtml(option);
         c += `
         <input type="radio" name="question${con}" id="o${o}" value="${option}" class="card-text mt-4 ms-4 me-2">
-        <label for="o${o}">${option}</label><br>
+        <label for="o${o}">${escapedOption}</label><br>
         `; // Create radio button with a label
         o++; // Increment the ID
     }
@@ -20,6 +21,14 @@ function goToTestHere() {
 
     // Redirect to the testHere page
     window.location.href = '../test-here/testHere.html';
+}
+
+function escapeHtml(str) {
+    return str.replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;")
+              .replace(/'/g, "&#039;");
 }
 
 function displayOptionImg(op, con = 0) {
