@@ -151,6 +151,7 @@ fetch(url) // Relative path from the folder where your JS is located
         // Display the first question
         DisplayQuestion();
     })
+    
     .catch(error => {
         console.error('Error loading the JSON file:', error);
     });
