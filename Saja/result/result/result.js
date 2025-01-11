@@ -43,7 +43,7 @@ function back(name,score){
     sessionStorage.setItem(name, score);
 
 // Redirect to the testHere page
-    window.location.href = '../test-here/testHere.html';
+    window.location.href = '../../../../sally/test-here/testHere.html';
 }
 
 

@@ -149,7 +149,11 @@
         {
             "question": "What shape fills the missing part?",
             "image_path": "img_json/1.png",
-            "options": ["img_json/2.jpeg","img_json/3.png","img_json/4.jpeg","img_json/5.jpeg","img_json/6.jpeg"],
+            "options": ["img_json/2.jpeg",
+            "img_json/3.png",
+            "img_json/4.jpeg",
+            "img_json/5.jpeg",
+            "img_json/6.jpeg"],
             "correct_answer": "img_json/3.png"
           },
           {
