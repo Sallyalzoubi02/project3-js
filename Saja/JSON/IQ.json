@@ -27,35 +27,50 @@
         {
             "question": "At the end of the concert, 10 people greet each other. How many times will they greet each other?",
             "options": [
-                "45"
+                "45",
+                "55",
+                "50",
+                "40"
             ],
             "correct_answer": "45"
         },
         {
             "question": "If two people eat 2 slices of pizza in 2 minutes, how many people will it take to eat 18 pieces of pizza in 6 minutes?",
             "options": [
-                "6"
+                "6",
+                "8",
+                "4",
+                "10"
             ],
             "correct_answer": "6"
         },
         {
             "question": "Under the fence, 6 pairs of horse hooves are visible. How many horses are behind the fence?",
             "options": [
-                "3"
+                "3",
+                "4",
+                "5",
+                "2"
             ],
             "correct_answer": "3"
         },
         {
             "question": "Yura needs 13 bottles of water from the store. He can only bring 3 bottles on each arrival. At least how many times will Yura have to go to the store to buy 13 bottles of water?",
             "options": [
-                "5"
+                "5",
+                "4",
+                "6",
+                "7"
             ],
             "correct_answer": "5"
         },
         {
             "question": "Sasha is 25, Anya is 15, and Maxim is 30. How old is Dima?",
             "options": [
-                "20"
+                "20",
+                "25",
+                "22",
+                "18"
             ],
             "correct_answer": "20"
         },
