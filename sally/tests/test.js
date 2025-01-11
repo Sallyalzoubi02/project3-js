@@ -29,7 +29,7 @@ function displayOptionImg(op, con = 0) {
     // Loop through the options
     for (const option of op) {
         console.log(option)
-        .lo
+        
         c += `
         <input type="radio" name="question${con}" id="o${o}" value="${option}" class="card-text mt-4 ms-4 me-2">
         <label for="o${o}">
