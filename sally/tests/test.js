@@ -1,3 +1,62 @@
+
+let isLoggedIn = localStorage.getItem('isLoggedIn');
+
+function updateNavbar() {
+    if (isLoggedIn) {
+        document.getElementById('test').style.display = 'block';
+        document.getElementById('userProfile').style.display = 'block';
+        document.getElementById('logout').style.display = 'block';
+        document.getElementById('log').style.display = 'none';
+        document.getElementById('join').style.display = 'none';
+    } else {
+        document.getElementById('test').style.display = 'none';
+        document.getElementById('userProfile').style.display = 'none';
+        document.getElementById('logout').style.display = 'none';
+        document.getElementById('log').style.display = 'block';
+        document.getElementById('join').style.display = 'block';
+    }
+}
+
+function home() {
+    window.location.href = '../../suhaib/home.html';
+    
+}
+
+function profile() {
+    window.location.href='../../Saja/profile/profile.html'
+}
+
+
+function Register() {
+    window.location.href = '../toqa/Login&SignUp/Login.html?show=signup';
+}
+
+function about() {
+    window.location.href = '../../toqa/About Us/About Us.html';
+    
+}
+function aboutT() {
+    window.location.href = '../../toqa/About Us/About Us.html#Q';
+    
+}
+function Contact() {
+    window.location.href = '../../Ammar/Ammars/ContactUs/contactUs.html';
+    
+}
+
+
+function logout() {
+    alert('Logged out successfully');
+    localStorage.setItem('isLoggedIn', 'false'); 
+    localStorage.removeItem('user')
+
+    window.location.href = '../../suhaib/home.html';
+    
+    updateNavbar();
+}
+window.onload = updateNavbar;
+
+
 // Function to loop through the question options
 function displayOption(op, con = 0) {
     let c = ''; // Holder for the HTML elements
@@ -72,7 +131,7 @@ if (testId == 0) {
 fetch(url) // Relative path from the folder where your JS is located
     .then(response => response.json()) // Parse it to object
     .then(data => {
-        let parent = document.getElementById('test'); // Call the parent container
+        let parent = document.getElementById('test1'); // Call the parent container
         let counter = 0;
         let ans = []; // Store user answers
         let correctAns =[];

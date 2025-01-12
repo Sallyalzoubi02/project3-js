@@ -1,3 +1,89 @@
+let isLoggedIn= localStorage.getItem('isLoggedIn') ;
+function getData(){
+    var username = document.getElementById('actualFullName');
+    var email = document.getElementById('actualEmail');
+    var phone = document.getElementById('actualPhone');
+    var gender = document.getElementById('actualGender');
+   
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
+
+    username.innerHTML =  user.Username
+    email.innerHTML = user.regEmail
+    phone.innerHTML = user.phone
+    gender.innerHTML =  user.gender
+    document.getElementById('profileFullNameInput').value = user.Username;
+    document.getElementById('profileEmailInput').value = user.regEmail;
+    document.getElementById('phone').value = user.phone;
+    document.getElementById('gender').value = user.gender;
+    
+    
+}
+getData();
+
+
+function updateNavbar() {
+    if (isLoggedIn) {
+        document.getElementById('test').style.display = 'block';
+        document.getElementById('userProfile').style.display = 'block';
+        document.getElementById('logout').style.display = 'block';
+        document.getElementById('log').style.display = 'none';
+        document.getElementById('join').style.display = 'none';
+    } else {
+        document.getElementById('test').style.display = 'none';
+        document.getElementById('userProfile').style.display = 'none';
+        document.getElementById('logout').style.display = 'none';
+        document.getElementById('log').style.display = 'block';
+        document.getElementById('join').style.display = 'block';
+    }
+}
+
+function home() {
+    window.location.href = '../../suhaib/home.html';
+    
+}
+
+function profile() {
+    window.location.href='../../Saja/profile/profile.html'
+}
+
+
+function testhere() {
+    window.location.href='../sally/test-here/testHere.html'
+}
+
+function Register() {
+    window.location.href = '../toqa/Login&SignUp/Login.html?show=signup';
+}
+
+function about() {
+    window.location.href = '../../toqa/About Us/About Us.html';
+    
+}
+function aboutT() {
+    window.location.href = '../../toqa/About Us/About Us.html#Q';
+    
+}
+function Contact() {
+    window.location.href = '../../Ammar/Ammars/ContactUs/contactUs.html';
+    
+}
+
+
+function logout() {
+    alert('Logged out successfully');
+    localStorage.setItem('isLoggedIn', 'false'); 
+    localStorage.removeItem('user')
+
+    window.location.href = '../../suhaib/home.html';
+    updateNavbar();
+}
+
+
+
+window.onload = updateNavbar;
+
 // function previewImage(event) {
 //     const image = document.getElementById('profileImage');
 //     const file = event.target.files[0];
@@ -16,26 +102,7 @@
 //     }
 // }
 
-// function saveChanges() {
-//     // Get the values entered by the user
-//     var fullName = document.getElementById('profileFullNameInput').value;
-//     var email = document.getElementById('profileEmailInput').value;
-//     var phone = document.getElementById('phone').value;
-//     var location = document.getElementById('location').value;
-//     var gender = document.getElementById('gender').value;
 
-//     // Update the profile details with the new values
-//     document.getElementById('profileFullName').innerText = fullName; // Update sidebar
-//     document.getElementById('profileEmail').innerText = email; // Update sidebar
-//     document.getElementById('actualFullName').innerText = fullName; // Update details card
-//     document.getElementById('actualEmail').innerText = email; // Update details card
-//     document.getElementById('actualPhone').innerText = phone;
-//     document.getElementById('actualLocation').innerText = location;
-//     document.getElementById('actualGender').innerText = gender === "male" ? "Male" : "Female";
-
-//     // Optionally close the modal after saving
-//     $('#editProfileModal').modal('hide');
-// }
 
 // function loadProfile() {
 //     // Check if the data exists in Local Storage
@@ -62,59 +129,67 @@
 // }
 
 // // Save changes to Local Storage
-// function saveChanges() {
-//     const fullName = document.getElementById('profileFullNameInput').value;
-//     const email = document.getElementById('profileEmailInput').value;
-//     const phone = document.getElementById('phone').value;
-//     const location = document.getElementById('location').value;
-//     const gender = document.getElementById('gender').value;
-
-//     // Store the data in Local Storage
-//     localStorage.setItem('profileData', JSON.stringify({ fullName, email, phone, location, gender }));
-
-//     // Update the current display
-//     updateProfile();
-//     alert('Profile updated successfully!');
-//     // Close the modal
-//     document.querySelector('#editProfileModal .btn-close').click();
-// }
-
-// // Update page data from Local Storage
-// function updateProfile() {
-//     const storedData = localStorage.getItem('profileData');
-//     if (storedData) {
-//         const { fullName, email, phone, location, gender } = JSON.parse(storedData);
-//         document.getElementById('actualFullName').textContent = fullName;
-//         document.getElementById('profileFullName').textContent = fullName;
-//         document.getElementById('actualEmail').textContent = email;
-//         document.getElementById('profileEmail').textContent = email;
-//         document.getElementById('actualPhone').textContent = phone;
-//         document.getElementById('actualLocation').textContent = location;
-//         document.getElementById('actualGender').textContent = gender.charAt(0).toUpperCase() + gender.slice(1);
-//     }
-// }
+function saveChanges() {
+    const fullName = document.getElementById('profileFullNameInput').value;
+    const phone = document.getElementById('phone').value;
+    const user = JSON.parse(localStorage.getItem("user"));
+    user.Username = fullName
+    user.phone =phone
+    let regEmail = user.regEmail
+    console.log(regEmail)
+    
+    
+    const users = JSON.parse(localStorage.getItem("users"));
+    console.log(users);
+    const userIndex = users.findIndex(user => user.regEmail === regEmail);
+    if (userIndex !== -1) {
+        users[userIndex].Username = fullName;
+        users[userIndex].phone = phone;
+    }
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem('user',JSON.stringify(user))
+    getData();
+    alert('Profile updated successfully!');
+    document.querySelector('#editProfileModal .btn-close').click();
+}
 
 // // Load data when the page opens
 // document.addEventListener('DOMContentLoaded', updateProfile);
 
-// // Preview the image on change
-// function previewImage(event) {
-//     const imageFile = event.target.files[0];
-//     if (imageFile) {
-//         const reader = new FileReader();
-//         reader.onload = function (e) {
-//             document.getElementById('profileImage').src = e.target.result;
-//         };
-//         reader.readAsDataURL(imageFile);
-//     }
-// }
+// Preview the image on change
+function previewImage(event) {
+    const imageFile = event.target.files[0];
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('profileImage').src = e.target.result;
+        };
+        reader.readAsDataURL(imageFile);
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log(user.img = imageFile);
+        
+    //     let regEmail = user.regEmail
+        
+        
+    //     const users = JSON.parse(localStorage.getItem("users"));
+    //    ;
+    //     const userIndex = users.findIndex(user => user.regEmail === regEmail);
+    //     if (userIndex !== -1) {
+    //         users[userIndex].Username = fullName;
+    //         users[userIndex].phone = phone;
+    //     }
+    //     localStorage.setItem("users", JSON.stringify(users));
+    //     localStorage.setItem('user',JSON.stringify(user))
+        
+    }
+}
 // //testing 
 
-// // const quizResults = {
-// //     iq: 60,
-// //     english: 70,
-// //     technical: 92
-// // };
+// const quizResults = {
+//     iq: 60,
+//     english: 70,
+//     technical: 92
+// };
 
 // // Store quiz results in localStorage
 // localStorage.setItem('quizResults', JSON.stringify(quizResults));
@@ -132,99 +207,7 @@
 //     document.querySelector('.circle:nth-child(2) span').textContent = `${results.english}%`;
 //     document.querySelector('.circle:nth-child(2) p').textContent = "English Test";
 
-<<<<<<< HEAD
-    document.querySelector('.circle:nth-child(3) span').textContent = `${results.technical}%`;
-    document.querySelector('.circle:nth-child(3) p').textContent = "Technical Test";
-}
-
-    if (!emailPattern.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-    }
-
-    if (!phonePattern.test(phone)) {
-        alert('Please enter a valid phone number.');
-        return;
-    }
-
-    if (!locationPattern.test(location)) {
-        alert('Please enter a valid location.');
-        return;
-    }
-
-    // Store the data in Local Storage
-    localStorage.setItem('profileData', JSON.stringify({ fullName, email, phone, location, gender }));
-
-    // Update the current display
-    updateProfile();
-    alert('Profile updated successfully!');
-    // Close the modal
-    document.querySelector('#editProfileModal .btn-close').click();
-}
-
-// Update page data from Local Storage
-function updateProfile() {
-    const storedData = localStorage.getItem('profileData');
-    if (storedData) {
-        const { fullName, email, phone, location, gender } = JSON.parse(storedData);
-        document.getElementById('actualFullName').textContent = fullName;
-        document.getElementById('profileFullName').textContent = fullName;
-        document.getElementById('actualEmail').textContent = email;
-        document.getElementById('profileEmail').textContent = email;
-        document.getElementById('actualPhone').textContent = phone;
-        document.getElementById('actualLocation').textContent = location;
-        document.getElementById('actualGender').textContent = gender.charAt(0).toUpperCase() + gender.slice(1);
-    }
-}
-
-// Load data when the page opens
-document.addEventListener('DOMContentLoaded', updateProfile);
-
-// Preview the image on change
-function previewImage(event) {
-    const imageFile = event.target.files[0];
-    if (imageFile) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById('profileImage').src = e.target.result;
-        };
-        reader.readAsDataURL(imageFile);
-    }
-}
-
-//testing 
-
-// const quizResults = {
-//     iq: 60,
-//     english: 70,
-//     technical: 92
-// };
-
-// Store quiz results in localStorage
-localStorage.setItem('quizResults', JSON.stringify(quizResults));
-
-// Retrieve quiz results from localStorage
-const storedResults = localStorage.getItem('quizResults');
-
-if (storedResults) {
-    const results = JSON.parse(storedResults);
-
-    // Update test results on the page
-    document.querySelector('.circle:nth-child(1) span').textContent = `${results.iq}%`;
-    document.querySelector('.circle:nth-child(1) p').textContent = "IQ Test";
-
-    document.querySelector('.circle:nth-child(2) span').textContent = `${results.english}%`;
-    document.querySelector('.circle:nth-child(2) p').textContent = "English Test";
-
-    document.querySelector('.circle:nth-child(3) span').textContent = `${results.technical}%`;
-    document.querySelector('.circle:nth-child(3) p').textContent = "Technical Test";
-}
-=======
 //     document.querySelector('.circle:nth-child(3) span').textContent = `${results.technical}%`;
 //     document.querySelector('.circle:nth-child(3) p').textContent = "Technical Test";
 // }
 
-
-/////////////////////////////////////////////////
-console.log(sessionStorage.getItem("score_eng"));
->>>>>>> fcc3d7f4a370c4177aabae8bd3be7d533134417f
