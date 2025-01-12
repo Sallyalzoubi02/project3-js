@@ -123,33 +123,33 @@ function Contact() {
     window.location.href = '../../Ammar/Ammars/ContactUs/contactUs.html';
     
 }
+window.onload = OnLoadEventHandeler;
 
 
-// function logout() {
-//     alert('Logged out successfully');
-//     isLoggedIn = false;
-//     localStorage.setItem('isLoggedIn', 'false'); 
-//     updateNavbar();
-// }
+function OnLoadEventHandeler(){
+    const queryString=window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    
+    const show = urlParams.get('show')
+    console.log(show);
+    
+    if(show=='signup')
+    {
+        registerbtn.click();
+    }
+    else
+    {
+        loginbtn.click();
+    }
 
-
-
-
-
-
-const urlParams = new URLSearchParams(queryString);
-
-const show = urlParams.get('show')
-console.log(show);
-
-if(show=='signup')
-{
-    registerbtn.click();
 }
-else
-{
-    loginbtn.click();
-}
+
+
+
+
+
+
+
 
 
 
