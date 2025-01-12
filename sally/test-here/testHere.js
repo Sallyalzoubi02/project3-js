@@ -1,8 +1,10 @@
 console.log('Hello')
+const user = JSON.parse(localStorage.getItem("user"));
+let UserName=user.Username
 window.addEventListener('load',(event)=>{
-    console.log("iq", sessionStorage.getItem("iq"));
+    console.log("iq", sessionStorage.getItem("iq-"+UserName));
 
-    if (sessionStorage.getItem("iq") == "true") {
+    if (sessionStorage.getItem("iq-"+UserName) == "true") {
       document.getElementById("r1").disabled = false;
       document.getElementById("s1").disabled = true;
     } else {
@@ -10,7 +12,7 @@ window.addEventListener('load',(event)=>{
       document.getElementById("s1").disabled = false;
     }
   
-    if (sessionStorage.getItem("eng") == "true") {
+    if (sessionStorage.getItem("eng-"+UserName) == "true") {
       document.getElementById("r2").disabled = false;
       document.getElementById("s2").disabled = true;
     } else {
@@ -18,7 +20,7 @@ window.addEventListener('load',(event)=>{
       document.getElementById("s2").disabled = false;
     }
   
-    if (sessionStorage.getItem("tech") == "true") {
+    if (sessionStorage.getItem("tech-"+UserName) == "true") {
       document.getElementById("r3").disabled = false;
       document.getElementById("s3").disabled = true;
     } else {

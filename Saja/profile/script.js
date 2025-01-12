@@ -1,5 +1,7 @@
 let isLoggedIn= localStorage.getItem('isLoggedIn') ;
 var Base64
+const user = JSON.parse(localStorage.getItem("user"));
+let UserName=user.Username
 function getData(){
     var username = document.getElementById('actualFullName');
     var email = document.getElementById('actualEmail');
@@ -262,10 +264,10 @@ function CalculateAllTestResults(){
 
 
 function GetExamScore(arrName,corr){
-    let arrAns= sessionStorage.getItem(arrName).split(',')
-    let arrAnsb= sessionStorage.getItem(arrName)
+    let arrAns= sessionStorage.getItem(arrName+'-'+UserName).split(',')
+    let arrAnsb= sessionStorage.getItem(arrName+'-'+UserName)
     console.log(arrAns)
-    let arrCorrect= sessionStorage.getItem(corr).split(',')
+    let arrCorrect= sessionStorage.getItem(corr+'-'+UserName).split(',')
     console.log(arrCorrect)
     
     let score = 0
@@ -281,7 +283,7 @@ function GetExamScore(arrName,corr){
 
 function GetExamPercentage(corr,Currentscore){
     
-    let arrCorrect= sessionStorage.getItem(corr).split(',')
+    let arrCorrect= sessionStorage.getItem(corr+'-'+UserName).split(',')
     
     return Currentscore/arrCorrect.length;
     

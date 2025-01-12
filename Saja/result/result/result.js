@@ -1,5 +1,7 @@
 //calculate the scoure
 let isLoggedIn = localStorage.getItem('isLoggedIn');
+const user = JSON.parse(localStorage.getItem("user"));
+let UserName=user.Username
 
 function home() {
     window.location.href = '../../../../suhaib/home.html';
@@ -53,10 +55,10 @@ function updateNavbar() {
 window.onload = updateNavbar;
 
 function calcRes(arrName,corr,url,testname){
-    let arrAns= sessionStorage.getItem(arrName).split(',')
-    let arrAnsb= sessionStorage.getItem(arrName)
+    let arrAns= sessionStorage.getItem(arrName+'-'+UserName).split(',')
+    let arrAnsb= sessionStorage.getItem(arrName+'-'+UserName)
     console.log(arrAns)
-    let arrCorrect= sessionStorage.getItem(corr).split(',')
+    let arrCorrect= sessionStorage.getItem(corr+'-'+UserName).split(',')
     console.log(arrCorrect)
     
     let resCard = document.getElementById('result');

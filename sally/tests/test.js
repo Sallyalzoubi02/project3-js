@@ -1,5 +1,7 @@
 
 let isLoggedIn = localStorage.getItem('isLoggedIn');
+const user = JSON.parse(localStorage.getItem("user"));
+let UserName=user.Username
 
 function updateNavbar() {
     if (isLoggedIn) {
@@ -76,7 +78,7 @@ function displayOption(op, con = 0) {
 
 function goToTestHere() {
     // Store test status
-    sessionStorage.setItem(`${testname}`, "true");
+    sessionStorage.setItem(`${testname}-${UserName}`, "true");
 
     // Redirect to the testHere page
     window.location.href = '../test-here/testHere.html';
@@ -148,8 +150,8 @@ fetch(url) // Relative path from the folder where your JS is located
                         </div>
                     </div>
                 `;
-                sessionStorage.setItem(`${testname}ans`, ans);
-                sessionStorage.setItem(`${testname}correctAns`, correctAns);
+                sessionStorage.setItem(`${testname}ans-${UserName}`, ans);
+                sessionStorage.setItem(`${testname}correctAns-${UserName}`, correctAns);
                 return;
             }
 
