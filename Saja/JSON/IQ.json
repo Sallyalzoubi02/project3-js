@@ -150,39 +150,39 @@
             "question": "What shape fills the missing part?",
             "image_path": "img_json/1.png",
             "options": [
-              {"option": "1", "image_path": "img_json/2.jpeg"},
-              {"option": "2", "image_path": "img_json/3.png"},
-              {"option": "3", "image_path": "img_json/4.jpeg"},
-              {"option": "4", "image_path": "img_json/5.jpeg"},
-              {"option": "5", "image_path": "img_json/6.jpeg"}
+                "img_json/2.jpeg",
+                "img_json/3.png",
+                "img_json/4.jpeg",
+                "img_json/5.jpeg",
+                "img_json/6.jpeg"
             ],
-            "correct_answer": "2"
+            "correct_answer": "img_json/3.png"
           },
           {
             "question": "What shape fills the missing part?",
             "image_path": "img_json/7.png",
             "options": [
-              {"option": "1", "image_path": "img_json/8.png"},
-              {"option": "2", "image_path": "img_json/9.png"},
-              {"option": "3", "image_path": "img_json/10.png"},
-              {"option": "4", "image_path": "img_json/11.png"},
-              {"option": "4", "image_path": "img_json/12.png"}
+              "img_json/8.png",
+               "img_json/9.png",
+              "img_json/10.png",
+               "img_json/11.png",
+              "img_json/12.png"
 
             ],
-            "correct_answer": "4"
+            "correct_answer": "img_json/11.png"
           },
           {
             "question": "What shape fills the missing part?",
             "image_path": "img_json/13.png",
             "options": [
-              {"option": "1", "image_path": "img_json/14.png"},
-              {"option": "2", "image_path": "img_json/15.png"},
-              {"option": "3", "image_path": "img_json/16.png"},
-              {"option": "4", "image_path": "img_json/17.png"},
-              {"option": "4", "image_path": "img_json/18.png"}
+               "img_json/14.png",
+              "img_json/15.png",
+             "img_json/16.png",
+              "img_json/17.png",
+               "img_json/18.png"
 
             ],
-            "correct_answer": "2"
+            "correct_answer": "img_json/15.png"
           }
           
           
