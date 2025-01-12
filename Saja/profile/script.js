@@ -135,3 +135,86 @@ if (storedResults) {
     document.querySelector('.circle:nth-child(3) span').textContent = `${results.technical}%`;
     document.querySelector('.circle:nth-child(3) p').textContent = "Technical Test";
 }
+
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    if (!phonePattern.test(phone)) {
+        alert('Please enter a valid phone number.');
+        return;
+    }
+
+    if (!locationPattern.test(location)) {
+        alert('Please enter a valid location.');
+        return;
+    }
+
+    // Store the data in Local Storage
+    localStorage.setItem('profileData', JSON.stringify({ fullName, email, phone, location, gender }));
+
+    // Update the current display
+    updateProfile();
+    alert('Profile updated successfully!');
+    // Close the modal
+    document.querySelector('#editProfileModal .btn-close').click();
+}
+
+// Update page data from Local Storage
+function updateProfile() {
+    const storedData = localStorage.getItem('profileData');
+    if (storedData) {
+        const { fullName, email, phone, location, gender } = JSON.parse(storedData);
+        document.getElementById('actualFullName').textContent = fullName;
+        document.getElementById('profileFullName').textContent = fullName;
+        document.getElementById('actualEmail').textContent = email;
+        document.getElementById('profileEmail').textContent = email;
+        document.getElementById('actualPhone').textContent = phone;
+        document.getElementById('actualLocation').textContent = location;
+        document.getElementById('actualGender').textContent = gender.charAt(0).toUpperCase() + gender.slice(1);
+    }
+}
+
+// Load data when the page opens
+document.addEventListener('DOMContentLoaded', updateProfile);
+
+// Preview the image on change
+function previewImage(event) {
+    const imageFile = event.target.files[0];
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('profileImage').src = e.target.result;
+        };
+        reader.readAsDataURL(imageFile);
+    }
+}
+
+//testing 
+
+// const quizResults = {
+//     iq: 60,
+//     english: 70,
+//     technical: 92
+// };
+
+// Store quiz results in localStorage
+localStorage.setItem('quizResults', JSON.stringify(quizResults));
+
+// Retrieve quiz results from localStorage
+const storedResults = localStorage.getItem('quizResults');
+
+if (storedResults) {
+    const results = JSON.parse(storedResults);
+
+    // Update test results on the page
+    document.querySelector('.circle:nth-child(1) span').textContent = `${results.iq}%`;
+    document.querySelector('.circle:nth-child(1) p').textContent = "IQ Test";
+
+    document.querySelector('.circle:nth-child(2) span').textContent = `${results.english}%`;
+    document.querySelector('.circle:nth-child(2) p').textContent = "English Test";
+
+    document.querySelector('.circle:nth-child(3) span').textContent = `${results.technical}%`;
+    document.querySelector('.circle:nth-child(3) p').textContent = "Technical Test";
+}

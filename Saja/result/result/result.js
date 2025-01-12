@@ -54,14 +54,14 @@ window.onload=()=>{
 
     //to know which result to calculate to read 
     if (rsultId == '0') {
-        url = '../../Saja/JSON/IQ.json';
+        url = '../Saja/JSON/IQ.json';
         testname = 'iq';
 
         calcRes('iqans','iqcorrectAns',url,testname)
         
     } 
     else if (rsultId == '1') {
-        url = '../../Saja/JSON/English.json';
+        url = '../Saja/JSON/English.json';
         testname = 'eng';
 
         calcRes('engans','engcorrectAns',url,testname)
@@ -69,7 +69,7 @@ window.onload=()=>{
 
     } 
     else if (rsultId == '2') {
-        url = '../../Saja/JSON/technical.json';
+        url = '../Saja/JSON/technical.json';
         testname = 'tech';
 
         calcRes('techans','techcorrectAns',url,testname)
@@ -189,7 +189,7 @@ function showAns(url,arrAns) {
                         <h5  class="card-title">${question.question}</h5><br>
                         <img src="../../Saja/JSON/${question.image_path}" style="max-width: 400px; display: block;">
                         ${displayOptionImg(question.options,arrAns,i,question.correct_answer)}
-                        <p class= 'CorrctAns mt-4'>Correcrt Answer is :<img src="../../Saja/JSON/${question.correct_answer}" style="max-width: 200px; display: block;"> </p> 
+                        <p class= 'CorrctAns mt-4'>Correcrt Answer is :<img src="../Saja/JSON/${question.correct_answer}" style="max-width: 200px; display: block;"> </p> 
                     </div>
                 </div>
             `
