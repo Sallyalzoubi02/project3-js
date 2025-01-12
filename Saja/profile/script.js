@@ -1,10 +1,13 @@
 let isLoggedIn= localStorage.getItem('isLoggedIn') ;
+var Base64
 function getData(){
     var username = document.getElementById('actualFullName');
     var email = document.getElementById('actualEmail');
     var phone = document.getElementById('actualPhone');
     var gender = document.getElementById('actualGender');
-   
+
+    var ProfImage = document.getElementById('profileImage');
+
 
     const user = JSON.parse(localStorage.getItem("user"));
     console.log(user);
@@ -17,7 +20,8 @@ function getData(){
     document.getElementById('profileEmailInput').value = user.regEmail;
     document.getElementById('phone').value = user.phone;
     document.getElementById('gender').value = user.gender;
-    
+    console.log('user.image',user.image)
+    ProfImage.src=user.image;
     
 }
 getData();
@@ -50,7 +54,7 @@ function profile() {
 
 
 function testhere() {
-    window.location.href='../sally/test-here/testHere.html'
+    window.location.href='../../sally/test-here/testHere.html'
 }
 
 function Register() {
@@ -135,6 +139,7 @@ function saveChanges() {
     const user = JSON.parse(localStorage.getItem("user"));
     user.Username = fullName
     user.phone =phone
+    user.image=Base64;
     let regEmail = user.regEmail
     console.log(regEmail)
     
@@ -145,6 +150,7 @@ function saveChanges() {
     if (userIndex !== -1) {
         users[userIndex].Username = fullName;
         users[userIndex].phone = phone;
+        users[userIndex].image=Base64;
     }
     localStorage.setItem("users", JSON.stringify(users));
     localStorage.setItem('user',JSON.stringify(user))
@@ -157,32 +163,33 @@ function saveChanges() {
 // document.addEventListener('DOMContentLoaded', updateProfile);
 
 // Preview the image on change
-function previewImage(event) {
-    const imageFile = event.target.files[0];
-    if (imageFile) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById('profileImage').src = e.target.result;
-        };
-        reader.readAsDataURL(imageFile);
-        const user = JSON.parse(localStorage.getItem("user"));
-        console.log(user.img = imageFile);
+// function previewImage(event) {
+//     const imageFile = event.target.files[0];
+//     console.log('imageFile',imageFile)
+//     if (imageFile) {
+//         const reader = new FileReader();
+//         reader.onload = function (e) {
+//             document.getElementById('profileImage').src = e.target.result;
+//         };
+//         reader.readAsDataURL(imageFile);
+//         const user = JSON.parse(localStorage.getItem("user"));
+//         console.log(user.img = imageFile);
         
-    //     let regEmail = user.regEmail
+//     //     let regEmail = user.regEmail
         
         
-    //     const users = JSON.parse(localStorage.getItem("users"));
-    //    ;
-    //     const userIndex = users.findIndex(user => user.regEmail === regEmail);
-    //     if (userIndex !== -1) {
-    //         users[userIndex].Username = fullName;
-    //         users[userIndex].phone = phone;
-    //     }
-    //     localStorage.setItem("users", JSON.stringify(users));
-    //     localStorage.setItem('user',JSON.stringify(user))
+//     //     const users = JSON.parse(localStorage.getItem("users"));
+//     //    ;
+//     //     const userIndex = users.findIndex(user => user.regEmail === regEmail);
+//     //     if (userIndex !== -1) {
+//     //         users[userIndex].Username = fullName;
+//     //         users[userIndex].phone = phone;
+//     //     }
+//     //     localStorage.setItem("users", JSON.stringify(users));
+//     //     localStorage.setItem('user',JSON.stringify(user))
         
-    }
-}
+//     }
+// }
 // //testing 
 
 // const quizResults = {
@@ -211,3 +218,22 @@ function previewImage(event) {
 //     document.querySelector('.circle:nth-child(3) p').textContent = "Technical Test";
 // }
 
+
+function previewImage(event) {
+    const imageFile = event.target.files[0];
+    console.log('imageFile',imageFile)
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+           Base64=e.target.result;
+           console.log('Base64',Base64);       
+
+        };
+        reader.onerror=(err)=>{
+console.error(err);
+        };
+        reader.readAsDataURL(imageFile);
+        const user = JSON.parse(localStorage.getItem("user"));
+   
+    }
+}

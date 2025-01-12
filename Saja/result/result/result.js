@@ -1,4 +1,57 @@
 //calculate the scoure
+let isLoggedIn = localStorage.getItem('isLoggedIn');
+
+function home() {
+    window.location.href = '../../../../suhaib/home.html';
+    
+}
+
+function profile() {
+    window.location.href='../../Saja/profile/profile.html'
+}
+
+
+function testhere() {
+    window.location.href='../../../../sally/test-here/testHere.html'
+}
+
+function Register() {
+    window.location.href = '../../../../toqa/Login&SignUp/Login.html?show=signup';
+}
+
+function about() {
+    window.location.href = '../../../toqa/About Us/About Us.html';
+    
+}
+function aboutT() {
+    window.location.href = '../../../../toqa/About Us/About Us.html#Q';
+    
+}
+function Contact() {
+    window.location.href = '../../../../Ammar/Ammars/ContactUs/contactUs.html';
+    
+}
+function Login() {
+    window.location.href='../../../toqa/Login&SignUp/Login.html#signinForm'
+}
+
+function updateNavbar() {
+    if (isLoggedIn === 'true') {
+        document.getElementById('test').style.display = 'block';
+        document.getElementById('userProfile').style.display = 'block';
+        document.getElementById('logout').style.display = 'block';
+        document.getElementById('log').style.display = 'none';
+        document.getElementById('join').style.display = 'none';
+    } else {
+        document.getElementById('test').style.display = 'none';
+        document.getElementById('userProfile').style.display = 'none';
+        document.getElementById('logout').style.display = 'none';
+        document.getElementById('log').style.display = 'block';
+        document.getElementById('join').style.display = 'block';
+    }
+}
+window.onload = updateNavbar;
+
 function calcRes(arrName,corr,url,testname){
     let arrAns= sessionStorage.getItem(arrName).split(',')
     let arrAnsb= sessionStorage.getItem(arrName)
@@ -58,22 +111,16 @@ window.onload=()=>{
 
     //to know which result to calculate to read 
     if (rsultId == '0') {
-<<<<<<< HEAD
-        url = '../Saja/JSON/IQ.json';
-=======
+
         url = '../../JSON/IQ.json';
->>>>>>> fcc3d7f4a370c4177aabae8bd3be7d533134417f
         testname = 'iq';
 
         calcRes('iqans','iqcorrectAns',url,testname)
         
     } 
     else if (rsultId == '1') {
-<<<<<<< HEAD
-        url = '../Saja/JSON/English.json';
-=======
+
         url = '../../JSON/English.json';
->>>>>>> fcc3d7f4a370c4177aabae8bd3be7d533134417f
         testname = 'eng';
 
         calcRes('engans','engcorrectAns',url,testname)
@@ -81,11 +128,8 @@ window.onload=()=>{
 
     } 
     else if (rsultId == '2') {
-<<<<<<< HEAD
-        url = '../Saja/JSON/technical.json';
-=======
+
         url = '../../JSON/technical.json';
->>>>>>> fcc3d7f4a370c4177aabae8bd3be7d533134417f
         testname = 'tech';
 
         calcRes('techans','techcorrectAns',url,testname)
@@ -216,11 +260,7 @@ function showAns(url,arrAns) {
                         <h5  class="card-title">${question.question}</h5><br>
                         <img src="../../JSON/${question.image_path}" style="max-width: 400px; display: block;">
                         ${displayOptionImg(question.options,arrAns,i,question.correct_answer)}
-<<<<<<< HEAD
-                        <p class= 'CorrctAns mt-4'>Correcrt Answer is :<img src="../Saja/JSON/${question.correct_answer}" style="max-width: 200px; display: block;"> </p> 
-=======
                         <p class= 'CorrctAns mt-4'>Correcrt Answer is :<img src="../../JSON/${question.correct_answer}" style="max-width: 200px; display: block;"> </p> 
->>>>>>> fcc3d7f4a370c4177aabae8bd3be7d533134417f
                     </div>
                 </div>
             `

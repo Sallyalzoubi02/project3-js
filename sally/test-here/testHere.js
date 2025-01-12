@@ -1,39 +1,34 @@
+console.log('Hello')
+window.addEventListener('load',(event)=>{
+    console.log("iq", sessionStorage.getItem("iq"));
 
-window.onload = () => {
-    
-    if (sessionStorage.getItem('iq') == 'true' && sessionStorage.getItem('tech') == 'true' && sessionStorage.getItem('eng') == 'true') {
-        document.getElementById('s3').disabled = true;
-        document.getElementById('r3').disabled = false;
-        document.getElementById('s2').disabled = true;
-        document.getElementById('r2').disabled = false;
-        document.getElementById('s1').disabled = true;
-        document.getElementById('r1').disabled = false;
-    } else if (sessionStorage.getItem('tech') == 'true' && sessionStorage.getItem('eng') == 'true') {
-        document.getElementById('s3').disabled = true;
-        document.getElementById('r3').disabled = false;
-        document.getElementById('s2').disabled = true;
-        document.getElementById('r2').disabled = false;
-    } else if (sessionStorage.getItem('iq') == 'true' && sessionStorage.getItem('eng') == 'true') {
-        document.getElementById('s1').disabled = true;
-        document.getElementById('r1').disabled = false;
-        document.getElementById('s2').disabled = true;
-        document.getElementById('r2').disabled = false;
-    } else if (sessionStorage.getItem('iq') == 'true' && sessionStorage.getItem('tech') == 'true') {
-        document.getElementById('s3').disabled = true;
-        document.getElementById('r3').disabled = false;
-        document.getElementById('s1').disabled = true;
-        document.getElementById('r1').disabled = false;
-    } else if (sessionStorage.getItem('iq') == 'true') {
-        document.getElementById('s1').disabled = true;
-        document.getElementById('r1').disabled = false;
-    } else if (sessionStorage.getItem('eng') == 'true') {
-        document.getElementById('s2').disabled = true;
-        document.getElementById('r2').disabled = false;
-    } else if (sessionStorage.getItem('tech') == 'true') {
-        document.getElementById('s3').disabled = true;
-        document.getElementById('r3').disabled = false;
+    if (sessionStorage.getItem("iq") == "true") {
+      document.getElementById("r1").disabled = false;
+      document.getElementById("s1").disabled = true;
+    } else {
+      document.getElementById("r1").disabled = true;
+      document.getElementById("s1").disabled = false;
     }
-};
+  
+    if (sessionStorage.getItem("tech") == "true") {
+      document.getElementById("r2").disabled = false;
+      document.getElementById("s2").disabled = true;
+    } else {
+      document.getElementById("r2").disabled = true;
+      document.getElementById("s2").disabled = false;
+    }
+  
+    if (sessionStorage.getItem("eng") == "true") {
+      document.getElementById("r3").disabled = false;
+      document.getElementById("s3").disabled = true;
+    } else {
+      document.getElementById("r3").disabled = true;
+      document.getElementById("s3").disabled = false;
+    }
+
+
+})
+
 
 let isLoggedIn = localStorage.getItem('isLoggedIn');
 

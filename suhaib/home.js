@@ -25,7 +25,9 @@ function Login() {
 }
 
 function testhere() {
+    
     window.location.href='../sally/test-here/testHere.html'
+
 }
 
 function profile() {
