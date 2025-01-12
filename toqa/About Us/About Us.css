@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 .navbar {
     position: fixed;
     top: 0;
@@ -22,10 +26,7 @@
 .all {
     margin-top: 12vw;
 }
-.custom-row {
-    margin-left: 7vw;
-    margin-top: 2vw;
-}
+
 
 .card-img-top{
     height: 22VW;
@@ -35,7 +36,9 @@
     margin-bottom: 5vw;
 } */
 
-.card   {transition: transform 0.3s, box-shadow 0.3s;}
+.card   {transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 2vw;
+}
 
 .card:hover{ transform: scale(1.05);
     box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.3);}
@@ -50,8 +53,170 @@
     margin-top: 10vw;
 }
 
-.Quiz {
-    margin-left: 3vw;
-    margin-top: 10vw;
+/* 3D Image Slider  */         /* 3D Image Slider  */         /* 3D Image Slider  */   
+   
+body::before{
+    position: absolute;
+    width: min(1400px, 90vw);
+    top: 10%;
+    left: 50%;
+    height: 90%;
+    transform: translateX(-50%);
+    content: '';
+    background-image: url(images/bg.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    pointer-events: none;
 }
-/* .all{margin-left: 10vw;} */
+@import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+
+/* I Created a dimension for the banner frame  */
+.banner{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden; 
+    /* overflow : hidden الهدف منها تخفي الاجزاء الي بتطلع عن حد ال frame  */
+    position: relative;
+}
+
+/* banner -> position relative "Parent" 
+slider position absolute*/
+.banner .slider{
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%; 
+    /* I moved it down 10%  from the banner */
+    left: calc(50% - 100px);
+    /* to put element in the center: 
+    50% from the left - (width/2)*/
+    transform-style: preserve-3d;
+    /* so i can make change in 3d space */
+    transform: perspective(1000px);
+    /* هاي ال 1000 هيه مسافة Z الي بتطلع من الصورة للجهاز */
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+}
+@keyframes autoRun{
+    from{
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }to{
+        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+}
+/* slider -> position absolute "Parent 
+item position absolute*/
+.banner .slider .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    /* inset sets the distance between the element's edges and the edges of it's parent
+that means it will give it the same size and position of the slider    
+    inset : top right bottom left*/
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(550px);
+        /* i use the transform to move the position in the z axis direction */
+}
+.banner .slider .item img{
+   /* i give it a width, height 100% to make it equal to the size of the item */
+    width: 100%;
+    height: 100%;
+    /*  to avoid distortion */
+    object-fit: cover;
+}
+.banner .content{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 100vw);
+    height: max-content;
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+.banner .content h1{
+    font-family: 'ICA Rubrik';
+    font-size: 16em;
+    line-height: 1em;
+    color: #25283B;
+    position: relative;
+}
+.banner .content h1::after{
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 2px #d2d2d2;
+    color: transparent;
+}
+.banner .content .author{
+    font-family: Poppins;
+    text-align: right;
+    max-width: 200px;
+}
+.banner .content h2{
+    font-size: 3em;
+}
+.banner .content .model{
+    background-image: url(images/model.png);
+    width: 100%;
+    height: 75vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-size: auto 130%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index: 1;
+}
+@media screen and (max-width: 1023px) {
+    .banner .slider{
+        width: 160px;
+        height: 200px;
+        left: calc(50% - 80px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(300px);
+    }
+    .banner .content h1{
+        text-align: center;
+        width: 100%;
+        text-shadow: 0 10px 20px #000;
+        font-size: 7em;
+    }
+    .banner .content .author{
+        color: #fff;
+        padding: 20px;
+        text-shadow: 0 10px 20px #000;
+        z-index: 2;
+        max-width: unset;
+        width: 100%;
+        text-align: center;
+        padding: 0 30px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .banner .slider{
+        width: 100px;
+        height: 150px;
+        left: calc(50% - 50px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(180px);
+    }
+    .banner .content h1{
+        font-size: 5em;
+    }
+}

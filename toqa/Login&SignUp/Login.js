@@ -77,6 +77,7 @@ document.getElementById("signupForm").addEventListener("submit", function (event
         users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));
         alert("Registration successful! Please login.");
+        loginbtn.click();
     }
 });
 
