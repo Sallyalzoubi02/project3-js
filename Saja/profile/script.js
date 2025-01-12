@@ -237,3 +237,54 @@ console.error(err);
    
     }
 }
+
+function CalculateAllTestResults(){
+
+    let IqScore=GetExamScore('iqans','iqcorrectAns')
+    let IqPercentage=parseInt(GetExamPercentage('iqcorrectAns',IqScore)*100) 
+    document.getElementById('IqTestResultPer').innerHTML=IqPercentage+'%';
+    document.getElementById('IqTestResult').style.setProperty('--percentage',IqPercentage)
+
+    
+    let EnglishScore=GetExamScore('engans','engcorrectAns')
+    let EnglishPercentage=parseInt(GetExamPercentage('engcorrectAns',EnglishScore)*100) 
+    document.getElementById('EnglishTestResultPer').innerHTML=EnglishPercentage+'%';
+    document.getElementById('EnglishTestResult').style.setProperty('--percentage',EnglishPercentage)
+
+
+    let TechnicalScore=GetExamScore('techans','techcorrectAns')
+    let TechnicalPercentage=parseInt(GetExamPercentage('techcorrectAns',TechnicalScore)*100) 
+    document.getElementById('TechnicalTestResultPer').innerHTML=TechnicalPercentage+'%';
+    document.getElementById('TechnicalTestResult').style.setProperty('--percentage',TechnicalPercentage)
+
+}    
+
+
+
+function GetExamScore(arrName,corr){
+    let arrAns= sessionStorage.getItem(arrName).split(',')
+    let arrAnsb= sessionStorage.getItem(arrName)
+    console.log(arrAns)
+    let arrCorrect= sessionStorage.getItem(corr).split(',')
+    console.log(arrCorrect)
+    
+    let score = 0
+    for (let i = 0 ; i < arrAns.length ; i++){
+        if (arrAns[i].trim() == arrCorrect[i].trim()){
+            score++;
+        }
+
+    }
+    return score;
+}
+
+
+function GetExamPercentage(corr,Currentscore){
+    
+    let arrCorrect= sessionStorage.getItem(corr).split(',')
+    
+    return Currentscore/arrCorrect.length;
+    
+}
+
+CalculateAllTestResults();

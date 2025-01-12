@@ -10,7 +10,7 @@ window.addEventListener('load',(event)=>{
       document.getElementById("s1").disabled = false;
     }
   
-    if (sessionStorage.getItem("tech") == "true") {
+    if (sessionStorage.getItem("eng") == "true") {
       document.getElementById("r2").disabled = false;
       document.getElementById("s2").disabled = true;
     } else {
@@ -18,7 +18,7 @@ window.addEventListener('load',(event)=>{
       document.getElementById("s2").disabled = false;
     }
   
-    if (sessionStorage.getItem("eng") == "true") {
+    if (sessionStorage.getItem("tech") == "true") {
       document.getElementById("r3").disabled = false;
       document.getElementById("s3").disabled = true;
     } else {
