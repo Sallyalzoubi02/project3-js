@@ -68,8 +68,8 @@ function displayOption(op, con = 0) {
     for (const option of op) {
         const escapedOption = escapeHtml(option);
         c += `
-        <input type="radio" name="question${con}" id="o${o}" value="${option}" class="card-text mt-4 ms-4 me-2">
-        <label for="o${o}">${escapedOption}</label><br>
+        <input type="radio" name="question${con}" id="o${o}" value="${option}" class="card-text mt-4 ms-4 me-2 style="cursor:pointer"">
+        <label style="cursor:pointer" for="o${o}">${escapedOption}</label><br>
         `; // Create radio button with a label
         o++; // Increment the ID
     }
