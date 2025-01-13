@@ -128,55 +128,11 @@ that means it will give it the same size and position of the slider
     /*  to avoid distortion */
     object-fit: cover;
 }
-.banner .content{
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1400px, 100vw);
-    height: max-content;
-    padding-bottom: 100px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
-}
-.banner .content h1{
-    font-family: 'ICA Rubrik';
-    font-size: 16em;
-    line-height: 1em;
-    color: #25283B;
-    position: relative;
-}
-.banner .content h1::after{
-    position: absolute;
-    inset: 0 0 0 0;
-    content: attr(data-content);
-    z-index: 2;
-    -webkit-text-stroke: 2px #d2d2d2;
-    color: transparent;
-}
-.banner .content .author{
-    font-family: Poppins;
-    text-align: right;
-    max-width: 200px;
-}
-.banner .content h2{
-    font-size: 3em;
-}
-.banner .content .model{
-    background-image: url(images/model.png);
-    width: 100%;
-    height: 75vh;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-size: auto 130%;
-    background-repeat: no-repeat;
-    background-position: top center;
-    z-index: 1;
-}
+
+
+
+
+
 @media screen and (max-width: 1023px) {
     .banner .slider{
         width: 160px;
@@ -188,24 +144,9 @@ that means it will give it the same size and position of the slider
             rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
             translateZ(300px);
     }
-    .banner .content h1{
-        text-align: center;
-        width: 100%;
-        text-shadow: 0 10px 20px #000;
-        font-size: 7em;
-    }
-    .banner .content .author{
-        color: #fff;
-        padding: 20px;
-        text-shadow: 0 10px 20px #000;
-        z-index: 2;
-        max-width: unset;
-        width: 100%;
-        text-align: center;
-        padding: 0 30px;
-    }
+    
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 426px) {
     .banner .slider{
         width: 100px;
         height: 150px;
@@ -216,7 +157,15 @@ that means it will give it the same size and position of the slider
             rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
             translateZ(180px);
     }
-    .banner .content h1{
-        font-size: 5em;
+    .banner{
+    margin-bottom: -89vw;
+    margin-top: 9vw;
     }
+}
+
+
+@media screen and (max-width:426px) {
+
+    .imgRes{
+        width: 70%;}
 }
