@@ -97,7 +97,7 @@ function calcRes(arrName,corr,url,testname){
                         </div>
                     </div>
                     <div>
-                    <button class="btn btn-green mt-5 ms-1 ps-4 pe-4" id="btn" onclick=" showAns('${url}','${arr}')">Review Qize</button>
+                    <button class="btn btn-green mt-5 ms-1 ps-4 pe-4" id="btn" onclick=" showAns('${url}','${arr}')">Review Quiz</button>
                     <button class="btn btn-outline-green mt-5 me-1 ps-5 pe-5" id="btn" onclick="back()">back</button>
                     <div>
                     
