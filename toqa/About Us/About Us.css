@@ -158,8 +158,8 @@ that means it will give it the same size and position of the slider
             translateZ(180px);
     }
     .banner{
-    margin-bottom: -89vw;
-    margin-top: 9vw;
+        margin-bottom: -166vw;
+        margin-top: 9vw;
     }
 }
 
@@ -168,8 +168,4 @@ that means it will give it the same size and position of the slider
 
     .imgRes{
         width: 70%;}
-}
-
-.Quiz {
-    margin-top: 5vw;
 }

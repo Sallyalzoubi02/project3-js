@@ -22,7 +22,16 @@ signupForm.addEventListener('input', function () {
     // Username validation
     const regName = document.getElementById('Username').value;
     const regNameError = document.getElementById('regUserError');
+    
     regNameError.textContent = /^[a-zA-Z]+$/.test(regName) ? '' : 'Numbers are not allowed';
+    // /^[a-zA-Z]+$/.test(regName) ? '' : swal({
+    //     title: "Try Again!",
+    //     text: "Numbers are not allowed!",
+    //     icon: "warning"
+    //   });;
+     
+    
+
 
     // Email validation
     const email = document.getElementById('regEmail').value;
@@ -75,11 +84,21 @@ document.getElementById("signupForm").addEventListener("submit", function (event
     console.log(users)
 
     if (users.some(user => user.regEmail === regEmail)) {
-        alert("This email is already registered. Please use a different email.");
+        swal({
+            title: "Try Again!",
+            text: "This email is already registered. Please use a different email.",
+            icon: "warning"
+          });;
+        // alert("This email is already registered. Please use a different email.");
     } else {
         users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));
-        alert("Registration successful! Please login.");
+        // alert("Registration successful! Please login.");
+        swal({
+            title: "Well Done!",
+            text: "Registration successful! Please login.",
+            icon: "success"
+          });;
         loginbtn.click();
     }
 });
@@ -100,10 +119,20 @@ document.getElementById("signinForm").addEventListener("submit", function (event
             localStorage.setItem("isLoggedIn", "true");
             window.location.href = "../../suhaib/home.html";
         } else {
-            alert("Incorrect password");
+            // alert("Incorrect password");
+            swal({
+                title: "Try Again!",
+                text: "Incorrect password!",
+                icon: "warning"
+              });;
         }
     } else {
-        alert("User not found");
+        // alert("User not found");
+        swal({
+            title: "Try Again!",
+            text: "User not found!",
+            icon: "warning"
+          });;
     }
 });
 
