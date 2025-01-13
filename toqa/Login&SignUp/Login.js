@@ -39,8 +39,11 @@ signupForm.addEventListener('input', function () {
     const regpasswordError = document.getElementById('regpasswordError');
     if (password.value.length < 6) {
         regpasswordError.textContent = 'Password must be at least 6 characters';
-    } else if (!/[A-Z]/.test(password.value)) {
+    } 
+    else if (!/[A-Z]/.test(password.value)) {
         regpasswordError.textContent = 'Password must have at least one uppercase English letter';
+    }else if (!/[0-9]/.test(password.value)) {
+        regpasswordError.textContent = 'Password must have numbers ';
     } else {
         regpasswordError.textContent = '';
     }

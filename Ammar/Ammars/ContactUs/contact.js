@@ -16,39 +16,42 @@ function updateNavbar() {
     }
 }
 
-
+function home() {
+  window.location.href='../../../suhaib/home.html'
+}
 
 function Login() {
-    window.location.href='../toqa/Login&SignUp/Login.html#signinForm'
+    window.location.href='../../../toqa/Login&SignUp/Login.html#signinForm'
 }
 
 function testhere() {
     
-    window.location.href='../sally/test-here/testHere.html'
+    window.location.href='../../../sally/test-here/testHere.html'
 
 }
 
 function profile() {
-    window.location.href='../Saja/profile/profile.html'
+    window.location.href='../../../Saja/profile/profile.html'
 }
 
 
 function Register() {
-    window.location.href = '../toqa/Login&SignUp/Login.html?show=signup';
+    window.location.href = '../../../toqa/Login&SignUp/Login.html?show=signup';
 }
 
 function about() {
-    window.location.href = '../toqa/About Us/About Us.html';
+    window.location.href = '../../../toqa/About Us/About Us.html';
     
 }
 function aboutT() {
-    window.location.href = '../toqa/About Us/About Us.html#Q';
+    window.location.href = '../../../toqa/About Us/About Us.html#Q';
     
 }
 function Contact() {
     window.location.href = '../Ammar/Ammars/ContactUs/contactUs.html';
     
 }
+
 
 
 function logout() {

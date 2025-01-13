@@ -3,13 +3,31 @@ let isLoggedIn = localStorage.getItem('isLoggedIn');
 const user = JSON.parse(localStorage.getItem("user"));
 let UserName=user.Username
 
+
+function updateNavbar() {
+    if (isLoggedIn === 'true') {
+        document.getElementById('test').style.display = 'block';
+        document.getElementById('userProfile').style.display = 'block';
+        document.getElementById('logout').style.display = 'block';
+        document.getElementById('log').style.display = 'none';
+        document.getElementById('join').style.display = 'none';
+    } else {
+        document.getElementById('test').style.display = 'none';
+        document.getElementById('userProfile').style.display = 'none';
+        document.getElementById('logout').style.display = 'none';
+        document.getElementById('log').style.display = 'block';
+        document.getElementById('join').style.display = 'block';
+    }
+}
+
+
 function home() {
     window.location.href = '../../../../suhaib/home.html';
     
 }
 
 function profile() {
-    window.location.href='../../Saja/profile/profile.html'
+    window.location.href='../../profile/profile.html'
 }
 
 
@@ -37,22 +55,15 @@ function Login() {
     window.location.href='../../../toqa/Login&SignUp/Login.html#signinForm'
 }
 
-function updateNavbar() {
-    if (isLoggedIn === 'true') {
-        document.getElementById('test').style.display = 'block';
-        document.getElementById('userProfile').style.display = 'block';
-        document.getElementById('logout').style.display = 'block';
-        document.getElementById('log').style.display = 'none';
-        document.getElementById('join').style.display = 'none';
-    } else {
-        document.getElementById('test').style.display = 'none';
-        document.getElementById('userProfile').style.display = 'none';
-        document.getElementById('logout').style.display = 'none';
-        document.getElementById('log').style.display = 'block';
-        document.getElementById('join').style.display = 'block';
-    }
+
+function logout() {
+    alert('Logged out successfully');
+    isLoggedIn = false;
+    localStorage.setItem('isLoggedIn', 'false'); 
+    localStorage.removeItem('user')
+    home()
+    updateNavbar();
 }
-window.onload = updateNavbar;
 
 function calcRes(arrName,corr,url,testname){
     let arrAns= sessionStorage.getItem(arrName+'-'+UserName).split(',')
@@ -87,7 +98,7 @@ function calcRes(arrName,corr,url,testname){
                     </div>
                     <div>
                     <button class="btn btn-green mt-5 ms-1 ps-4 pe-4" id="btn" onclick=" showAns('${url}','${arr}')">Review Qize</button>
-                    <button class="btn btn-outline-green mt-5 me-1 ps-5 pe-5" id="btn" onclick="back('scour_${testname}', '${score}','${len}')">back</button>
+                    <button class="btn btn-outline-green mt-5 me-1 ps-5 pe-5" id="btn" onclick="back()">back</button>
                     <div>
                     
                 `;
@@ -95,18 +106,16 @@ function calcRes(arrName,corr,url,testname){
     
 }
 
-function back(name,score,arr){
-    const percentage = (score /arr) * 100;
-    console.log(percentage);
-    
-    sessionStorage.setItem(name, percentage);
+function back(){
 // Redirect to the testHere page
     window.location.href = '../../../../sally/test-here/testHere.html';
 }
 
 
 
+
 window.onload=()=>{
+    updateNavbar();
     let url;
     let rsultId = sessionStorage.getItem('resultId');
     let testname;

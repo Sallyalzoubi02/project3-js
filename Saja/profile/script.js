@@ -23,7 +23,9 @@ function getData(){
     document.getElementById('phone').value = user.phone;
     document.getElementById('gender').value = user.gender;
     console.log('user.image',user.image)
-    ProfImage.src=user.image;
+    if(user.image){
+        ProfImage.src=user.image;
+    }
     
 }
 getData();
