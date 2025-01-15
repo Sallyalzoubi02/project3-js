@@ -18,7 +18,7 @@ loginbtn.addEventListener("click", () => {
 });
 
 // Input validation for the signup form
-signupForm.addEventListener('input', function () {
+Username.addEventListener('input', function () {
     // Username validation
     const regName = document.getElementById('Username').value;
     const regNameError = document.getElementById('regUserError');
@@ -29,19 +29,23 @@ signupForm.addEventListener('input', function () {
     //     text: "Numbers are not allowed!",
     //     icon: "warning"
     //   });;
-     
+});
     
 
-
+regEmail.addEventListener('input', function () {
     // Email validation
     const email = document.getElementById('regEmail').value;
     const emailError = document.getElementById('regEmailError');
     emailError.textContent = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email) ? '' : 'The e-mail is not valid';
+});
+phone.addEventListener('input', function () {
 
     // Phone validation
     const regPhone = document.getElementById('phone').value;
     const regPhoneError = document.getElementById('regPhoneError');
     regPhoneError.textContent = /^[0-9]+$/.test(regPhone) ? '' : 'Numbers only allowed';
+});
+password.addEventListener('input', function () {
 
     // Password validation
     const password = document.getElementById('password');
@@ -56,12 +60,15 @@ signupForm.addEventListener('input', function () {
     } else {
         regpasswordError.textContent = '';
     }
+});
+password.addEventListener('input', function () {
 
     // Confirm password validation
     const regConfirmPassword = document.getElementById('regConfirmPassword');
     const regConfirmPasswordError = document.getElementById('regConfirmPasswordError');
     regConfirmPasswordError.textContent = password.value === regConfirmPassword.value ? '' : 'Passwords do not match';
 });
+
 
 // Handle signup form submission
 document.getElementById("signupForm").addEventListener("submit", function (event) {
