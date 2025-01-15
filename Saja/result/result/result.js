@@ -92,7 +92,7 @@ function calcRes(arrName,corr,url,testname){
                     <div class="card w-75">
                         <div class="card-body ${score >= arrCorrect.length/2 ? 'bg-success text-white' : 'bg-danger text-white'}">
                             <h5 class="card-title">your Scoure is :${score}</h5><br>
-                            <p class="card-text ">${score >= arrCorrect.length/2 ? 'Good Job you pass the test with' : 'Sorry,Try agine later'}</P>
+                            <p class="card-text ">${score >= arrCorrect.length/2 ? 'Good Job you pass the test' : 'Sorry,Try again later'}</P>
                             
                         </div>
                     </div>

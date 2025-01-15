@@ -1,7 +1,7 @@
 console.log('Hello')
 const user = JSON.parse(localStorage.getItem("user"));
 let UserName=user.Username
-window.addEventListener('load',(event)=>{
+window.addEventListener('load',()=>{
     console.log("iq", sessionStorage.getItem("iq-"+UserName));
 
     if (sessionStorage.getItem("iq-"+UserName) == "true") {
